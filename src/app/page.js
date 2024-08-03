@@ -129,28 +129,24 @@ export default function Home() {
         </Box>
       </Modal>
       <Button variant="contained" onClick={handleOpen}>
-        Add New Item
+        Add Item
       </Button>
-      <Box border={"1px solid #333"}>
-        <TextField
-          id="standard-basic"
-          label="Search Items"
-          value={filteredItem}
-          variant="standard"
-          onChange={handleFilterChange}
-        />
-        <ul>
-          {filterPantry.map((item) => (
-            <li key={item.id}>{item.name}</li>
-          ))}
-        </ul>
+      <TextField
+        id="standard-basic"
+        label="Search Items"
+        value={filteredItem}
+        variant="standard"
+        inputProps={{ style: { color: "red" } }}
+        onChange={handleFilterChange}
+        onKeyDown={handleFilterChange}
+      />
+      <Button variant="contained">Search Item</Button>
+      <Box>
         <Typography
           variant={"h2"}
           color={"#333"}
           textAlign={"center"}
         ></Typography>
-      </Box>
-      <Box border={"1px solid #333"}>
         <Box
           width="800px"
           height="100px"
@@ -164,7 +160,7 @@ export default function Home() {
           </Typography>
         </Box>
         <Stack width="800px" height="300px" spacing={2} overflow={"auto"}>
-          {inventory.map(({ name, quantity }) => (
+          {filterPantry.map(({ name, quantity }) => (
             <Box
               key={name}
               width="100%"
